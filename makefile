@@ -15,3 +15,5 @@ include makefiles/run.mk
 include makefiles/install.mk
 include makefiles/deploy.mk
 include makefiles/package.mk
+include makefiles/windows.mk
+

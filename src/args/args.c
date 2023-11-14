@@ -57,10 +57,7 @@ result_t args_parse(const int argc, char **argv) {
 
           char *runtime_path = strdup(args->runtime_path);
 
-          if (realpath(runtime_path, args->runtime_path) == NULL) {
-            perror("realpath"); // Print an error message if realpath fails
-            PANIC("realpath failed");
-          }
+          UNWRAP(real_path(runtime_path, args->runtime_path));
 
           free(runtime_path);
 

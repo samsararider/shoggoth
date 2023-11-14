@@ -22,6 +22,8 @@ typedef struct {
   u64 files_count;
 } files_list_t;
 
+result_t real_path(char *src, char *dest);
+
 result_t acquire_file_lock(char *file_path, u64 delay, u64 timeout);
 void release_file_lock(file_lock_t *lock);
 
@@ -51,7 +53,7 @@ result_t get_files_and_dirs_list(char *dir_path);
 void free_files_list(files_list_t *list);
 
 result_t copy_file(const char *source_file_path,
-                         const char *destination_file_path);
+                   const char *destination_file_path);
 
 void create_dir(const char *dir_path);
 
@@ -63,8 +65,7 @@ bool file_exists(const char *file_path);
 
 result_t write_to_file(const char *file_path, char *content, size_t size);
 
-result_t append_to_file(const char *file_path, char *content,
-                              size_t size);
+result_t append_to_file(const char *file_path, char *content, size_t size);
 
 result_t read_file_to_string(const char *file_path);
 

@@ -7,7 +7,11 @@
 #include <netlibc/log.h>
 #include <netlibc/string.h>
 
+#ifdef _WIN32
+#else
 #include <termios.h>
+#endif
+
 #include <wchar.h>
 
 typedef struct RGB {

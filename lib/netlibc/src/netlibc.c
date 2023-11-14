@@ -37,6 +37,22 @@
 #include <time.h>
 #include <unistd.h>
 
+result_t real_path(char *src, char *dest) {
+#ifdef _WIN32
+  if (_fullpath(src, dest, MAX_PATH) == NULL) {
+    perror("_fullpath"); // Print an error message if _fullpath fails
+    return ERR("_fullpath failed");
+  }
+#else
+  if (realpath(src, dest) == NULL) {
+    perror("realpath"); // Print an error message if realpath fails
+    return ERR("realpath failed");
+  }
+#endif
+
+  return OK(NULL);
+}
+
 /****
  * utility function to check if a directory exists
  *
